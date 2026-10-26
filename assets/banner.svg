@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="40%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <linearGradient id="primaryTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="glowPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.75" stroke-opacity="0.35" />
+      <circle cx="40" cy="40" r="1.5" fill="#475569" fill-opacity="0.5" />
+    </pattern>
+
+    <!-- Filter for Glow & Shadow -->
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- CSS Animations -->
+    <style>
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.75; transform: scale(1.08); }
+      }
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes floatFast {
+        0%, 100% { transform: translateY(0px) translateX(0px); }
+        50% { transform: translateY(-14px) translateX(6px); }
+      }
+      @keyframes barGrow {
+        0%, 100% { transform: scaleY(0.7); }
+        50% { transform: scaleY(1.15); }
+      }
+      @keyframes waveDash {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -120; }
+      }
+
+      .pulse-bg {
+        transform-origin: 950px 180px;
+        animation: pulseGlow 6s ease-in-out infinite;
+      }
+      .float-item-1 {
+        animation: floatSlow 5s ease-in-out infinite;
+      }
+      .float-item-2 {
+        animation: floatFast 4s ease-in-out infinite;
+      }
+      .wave-line {
+        stroke-dasharray: 8 6;
+        animation: waveDash 4s linear infinite;
+      }
+      .bar-anim-1 {
+        transform-origin: bottom;
+        animation: barGrow 3.2s ease-in-out infinite alternate;
+      }
+      .bar-anim-2 {
+        transform-origin: bottom;
+        animation: barGrow 4.5s ease-in-out infinite alternate;
+      }
+      .bar-anim-3 {
+        transform-origin: bottom;
+        animation: barGrow 2.8s ease-in-out infinite alternate;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="400" fill="url(#bgGrad)" rx="16" />
+  <rect width="1200" height="400" fill="url(#grid)" rx="16" />
+
+  <!-- Background Glow & Wave Graphics (strictly background, behind all text) -->
+  <g class="pulse-bg">
+    <circle cx="980" cy="180" r="180" fill="url(#glowPulse)" />
+  </g>
+  <circle cx="120" cy="340" r="140" fill="#0369a1" fill-opacity="0.12" filter="url(#softGlow)" />
+
+  <!-- Animated Chart / Erlang Workload Waves (Background Decor) -->
+  <g opacity="0.45">
+    <path class="wave-line" d="M 650 320 C 750 250, 820 370, 930 290 C 1020 220, 1100 270, 1180 230" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+    <path class="wave-line" d="M 680 340 C 780 270, 860 380, 960 310 C 1050 250, 1120 290, 1190 260" fill="none" stroke="#818cf8" stroke-width="1.8" />
+  </g>
+
+  <!-- Interactive Dashboard Silhouette / Node Cards in Background (Right Side) -->
+  <g class="float-item-1" opacity="0.82">
+    <!-- Mini Metric Card 1: Shift Adherence -->
+    <rect x="910" y="55" width="230" height="85" rx="12" fill="#1e293b" fill-opacity="0.85" stroke="#475569" stroke-width="1.2" />
+    <circle cx="940" cy="88" r="14" fill="#065f46" />
+    <path d="M 934 88 L 938 92 L 947 83" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="965" y="82" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">SCHEDULE ADHERENCE</text>
+    <text x="965" y="108" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">97.4%</text>
+    <text x="1035" y="108" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">+3.2%</text>
+  </g>
+
+  <g class="float-item-2" opacity="0.82">
+    <!-- Mini Metric Card 2: Queuing / Forecast -->
+    <rect x="850" y="165" width="220" height="90" rx="12" fill="#1e293b" fill-opacity="0.85" stroke="#475569" stroke-width="1.2" />
+    <circle cx="880" cy="202" r="14" fill="#1e1b4b" />
+    <path d="M 874 207 L 880 196 L 886 202 L 892 193" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="905" y="194" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">ERLANG C WORKLOAD</text>
+    <text x="905" y="222" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">4,820 FTE</text>
+  </g>
+
+  <!-- Workload Distribution Bars (Decorative Graphic) -->
+  <g opacity="0.6">
+    <rect class="bar-anim-1" x="1090" y="195" width="10" height="60" rx="5" fill="#38bdf8" />
+    <rect class="bar-anim-2" x="1110" y="180" width="10" height="75" rx="5" fill="#818cf8" />
+    <rect class="bar-anim-3" x="1130" y="165" width="10" height="90" rx="5" fill="#c084fc" />
+    <rect class="bar-anim-1" x="1150" y="210" width="10" height="45" rx="5" fill="#06b6d4" />
+  </g>
+
+  <!-- Foreground Main Branding & Typography (High Contrast, Never Obscured) -->
+  <g filter="url(#textShadow)">
+    <!-- Category Badge -->
+    <g transform="translate(60, 48)">
+      <rect width="265" height="32" rx="16" fill="#1e293b" stroke="#6366f1" stroke-width="1.5" />
+      <circle cx="16" cy="16" r="5" fill="#10b981" />
+      <text x="30" y="21" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="1">ENTERPRISE &amp; OPEN SOURCE</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="60" y="135" fill="url(#primaryTextGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif" font-size="46" font-weight="900" letter-spacing="-0.5">
+      Awesome Workforce Optimization
+    </text>
+
+    <!-- Subtitle -->
+    <text x="60" y="180" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif" font-size="20" font-weight="600">
+      The Complete Guide to WFO, WFM, Contact Center AI &amp; Shift Scheduling
+    </text>
+
+    <!-- Descriptive Line -->
+    <text x="60" y="218" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif" font-size="15" font-weight="400">
+      Curated directory of SaaS enterprise suites, Erlang C simulators, constraint solvers &amp; operations research engines.
+    </text>
+
+    <!-- Capability Feature Badges -->
+    <g transform="translate(60, 260)">
+      <!-- Pill 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="135" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+        <text x="14" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">📊 AI Forecasting</text>
+      </g>
+      <!-- Pill 2 -->
+      <g transform="translate(147, 0)">
+        <rect width="160" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+        <text x="14" y="22" fill="#818cf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">🗓️ Shift Rostering</text>
+      </g>
+      <!-- Pill 3 -->
+      <g transform="translate(319, 0)">
+        <rect width="175" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+        <text x="14" y="22" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">⚡ Real-Time Adherence</text>
+      </g>
+      <!-- Pill 4 -->
+      <g transform="translate(506, 0)">
+        <rect width="175" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+        <text x="14" y="22" fill="#f472b6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">🎯 Quality &amp; Analytics</text>
+      </g>
+    </g>
+
+    <!-- Bottom Metadata Banner -->
+    <g transform="translate(60, 335)">
+      <text x="0" y="16" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500">
+        Updated October 2026 • Verified Pricing &amp; Benchmarks • Star History &amp; Community Maintained
+      </text>
+    </g>
+  </g>
+</svg>
